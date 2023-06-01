@@ -1,0 +1,9 @@
+- bagaimana kesan dan pesan dari ibu sbg client utama saya waktu pengembangan aplikasi OM Tools
+- bagaimana pelayanan saya dalam menampung spesifikasi kebutuhan dan desain yang ibu berikan
+- apakah seluruh spesifikasi yang diberikan oleh ibu dapat dikembangkan secara sesuai oleh saya dan tim?
+- apakah aplikasi yang dihasilkan nyaman dan tepat guna digunakan sehari2 secara operasional bagi user
+- apakah aplikasi yang dihasilkan stabil untuk penggunaan sehari2
+- apakah aplikasi waktu itu mudah ditambah fitur baru
+
+jawab:
+... 

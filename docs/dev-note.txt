@@ -1,0 +1,177 @@
+== rabu, 28 okt 2020
+- cobain svg
+circle
+cx: kordinat x
+cy: kordinat y
+r: radius
+pathLength: panjang total dari keliling
+
+
+global attributes
+- core attributes
+- styling attributes
+- conditional processing attributes
+- event attributes
+- presentation attributes
+- ARIA attributes
+- 
+
+svg
+
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element
+
+== selasa, 27 okt 2020
+- add sql mapping orm framework
+- apply sql map to person
+
+- person: add tgl lahir ext, note
+
+- detail nikah:
+* urutan: set di duluan
+* urutan: set ke no anak terahir + 1
+
+
+* modifikasi order anak nikah: up, down
+
+* hapus anak nikah, juga reordering anak
+
+
+* profil orang
+
+- add orang tua
+
+orang tua
+pernikahan: xxx  
+ayah: xx [detail]
+ibu: yy [detail]
+
+saudara:
+dari pernikahan: xxx  
+
+
+
+
+== senin, 26 okt 2020
+- general framework
+- db manager
+- general struktur oop/code
+- add orang
+- list orang
+- delete orang
+
+- add nikah
+- list nikah
+
+- detail nikah
+
+- detail orang
+
+- add anak pernikahan
+- urutan anak nikah
+
+- list anak nikah
+
+
+- add atribut di orang: tempat lahir, tanggal lahir (nullable)
+
+- update orang list, orang detail
+
+- edit orang
+
+== error
+
+add orang: tanggal, jika kosong msh 00-00-00
+perlu note:
+edit urutan sodara
+
+
+==
+amang
+lina
+meti
+ida
+yuli
+nai
+iman
+
+==
+get orang tua dari seseorang (person id)
+ambil pernikahan yg ada anaknya si x -> dapet nikah id
+
+select
+
+from 
+person p,
+marriage_child mc,
+marriage m 
+where 
+p.id = xx and
+mc.child_id = p.id and
+
+
+select
+mc.*
+from 
+person p,
+marriage_child mc,
+marriage m 
+where 
+p.id = 'chris' and
+mc.child_id = p.id
+
+
+select mc.marriage_id from marriage_child mc where mc.child_id = 'chris'
+
+select p.* from marriage m, person p where m.id = '5f96641675483' AND m.husband_id = p.id
+
+===
+
+pasangan:
+- 
+
+===catatan
+- nikah, pasangan, anak
+
+siapa nikah dengan siapa
+papa nikah dengan mama
+kapan?
+dimana?
+
+nikah:
+marriage
+id|husband|wife
+
+papa berelasi dengan mama, relasi: pernikahan, role: suami
+
+mama berelasi dengan papa, relasi: pernikahan, role: istri
+
+relasi
+mrg|pp|suami
+mrg|mm|istri
+
+
+form:
+- marriage id
+- husband id
+- wife id
+[add]
+
+table:
+- marriage id: <uuid>
+- husband id
+- wife id
+
+
+
+===anak
+
+marriage_child
+- marriage id
+- person id
+- num
+
+
+
+
+
+

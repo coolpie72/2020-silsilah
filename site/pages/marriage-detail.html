@@ -1,0 +1,60 @@
+<div class="ch-title">Rincian Pernikahan</div>
+
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-vert">
+    <tr>
+        <th>Id</th>
+        <td><?= $marriage->id ?></td>
+    </tr>
+    <tr>
+        <th>Suami</th>
+        <td><?= $marriage->husbandId ?> -  <?= $husband->name ?> - <a href="index.php?page=person-detail&id=<?= $marriage->husbandId ?>">Detail</a></td>
+    </tr>
+    <tr>
+        <th>Istri</th>
+        <td><?= $marriage->wifeId ?> -  <?= $wife->name ?> - <a href="index.php?page=person-detail&id=<?= $marriage->wifeId ?>">Detail</a></td>
+    </tr>
+</table>
+
+<br/>
+
+Tambah Anak<br/>
+<form method="post" action="index.php?page=marriage-process-child-add">
+<input name="tx_marriage_id" type="hidden" value="<?= $marriage->id ?>" />
+Urutan: <input name="tx_child_num" type="text" value="<?= $childNumber + 1 ?>"/> 
+Id Anak: <input name="tx_child_id" type="text" /> 
+<input name="Submit1" type="submit" value="Simpan" />
+</form>
+
+<br/>
+<br/>
+List Anak
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+	<tr>
+		<th>Op</th>
+        <th>Urutan</th>
+        <th>&nbsp;</th>
+        <th>Id</th>
+        <th>Nama</th>
+        <th>Gender</th>
+    </tr>
+    
+<?php 
+    foreach($childList as $mc) { ?>
+    <tr>
+        <td>
+            <a href="index.php?page=person-detail&id=<?= $mc->childId ?>">Rinci</a>                
+        </td>
+        <td><?= $mc->number ?></td>
+        <td>
+            <?= mcLinkUp($mc->number, $childNumber, $marriage->id) ?> |
+            <?= mcLinkDown($mc->number, $childNumber, $marriage->id) ?> |        
+            <?= mcLinkDelete($mc->number, $childNumber, $marriage->id) ?> 
+        </td>        
+        <td><?= $mc->childId ?></td>
+        <td><?= $mc->ext->person_name ?></td>
+        <td><?= Util::displayGenderHtml($mc->ext->person_gender) ?></td>
+        
+      
+     </tr>
+<?php } ?>	
+</table>

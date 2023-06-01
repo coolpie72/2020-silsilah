@@ -1,0 +1,24 @@
+==edit xampp setting
+
+edit: D:\prog\xampp\apache\conf\extra\httpd-vhosts.conf
+add entry sbb:
+
+<VirtualHost coolpie.local:80>
+    DocumentRoot "D:/COOLPIE-CONSULTING/WEB-SOURCE"
+    ServerName coolpie.local    
+	<Directory "D:/COOLPIE-CONSULTING/WEB-SOURCE">
+        Require all granted    
+    </Directory>
+</VirtualHost>
+
+
+add entry di windows etc hosts
+
+C:/Windows/System32/drivers/etc/hosts
+
+127.0.0.1	coolpie.local
+
+restart xampp
+
+akses: coolpie.local di browser
+

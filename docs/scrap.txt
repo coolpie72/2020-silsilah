@@ -1,0 +1,9 @@
+
+root=agus
+Agus Herman - open
+    - [Sara] Susanna - close
+        [Sam] CHR
+        [Sam] Ruth
+        [Sam] Dian
+    - Sofina
+    - dst

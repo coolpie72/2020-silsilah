@@ -1,0 +1,21 @@
+
+
+utk xampp
+
+di httpd.conf pastikan ada load virtual host conf
+
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
+
+di httpd-vhosts.conf tambahkan entry sbb:
+
+Listen 8001
+NameVirtualHost *:8001
+<VirtualHost coolpie.local:8001>
+    DocumentRoot "D:/APP_PHP/SILSILAH-V1/site"
+    ServerName coolpie.local    
+	<Directory "D:/APP_PHP/SILSILAH-V1/site">
+        Require all granted    
+    </Directory>
+</VirtualHost>
+

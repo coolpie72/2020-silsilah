@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="en-us" http-equiv="Content-Language">
+
+<meta name="author" content="Christian Abraham">
+<meta name="description" content="Coolpie Consulting, Christian Abraham, Profesional TI, Trainer TI, Pelatihan TI, Konsultasi TI, Tutor TI, Pengembangan Aplikasi">
+<meta name="keywords" content="Coolpie, Indonesia, IT Professional, IT Training, IT Consulting, 
+IT Development, IT Management, IT Tutor, Java, PHP, Programming, Enterprise, Application, Development, Web, System Integration">
+
+<title><?= AppData::get()->data['title'] ?></title>
+<link rel="stylesheet" href="css/index.css"/>
+</head>
+
+<body bgcolor="gray">
+<div align="center">
+	<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-site">
+		<tr>
+			<?php include "header.html" ?>
+		</tr>
+		<tr>
+			<td>
+			<table style="width: 100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<?php include "menu.html" ?>
+					<?php include "page.html" ?>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<?php include "footer.html" ?>
+		</tr>
+	</table>
+</div>
+
+</body>
+
+</html>

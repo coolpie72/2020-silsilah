@@ -1,0 +1,40 @@
+<div class="ch-title">Daftar Orang</div>
+
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+	<tr>
+		<th>&nbsp;</th>
+        <th>Id</th>
+        <th>Nama</th>
+        <th>FB</th>
+        <th>Gender</th>
+        <th>Tanggal Lahir</th>
+        <th>Tanggal Lahir Ext</th>
+        <th>Tempat Lahir</th>
+        <th>Tempat Meninggal</th>
+        <th>Catatan</th>
+    </tr>
+    
+<?php 
+    foreach ($list as $person) { 
+        $clsDied = $person->isDied() ? 'class="ch-row-died"' : '';
+?>
+     <tr <?= $clsDied ?>>
+        <td>
+            <a href="index.php?page=person-detail&id=<?= $person->id ?>">Rinci</a> |
+            <a href="index.php?page=root&id=<?= $person->id ?>">Hirarki</a> |
+            <a href="index.php?page=person-add&id=<?= $person->id ?>">Ubah</a> |
+            <a href="index.php?page=person-process-delete&id=<?= $person->id ?>">Hapus</a>                
+        </td>
+        <td><?= $person->id ?></td>
+        <td><?= $person->name ?></td>
+        <td><?= personListFacebookLink($person)?></td>
+        <td><?= Util::displayGenderHtml($person->gender) ?></td>
+        <td><?= $person->birthDate ?></td>
+        <td><?= $person->birthDateExt ?></td>
+        <td><?= $person->birthPlace ?></td>
+        <td><?= $person->diePlace ?></td>
+        <td><?= Util::cutText($person->note, 30) ?></td>
+     
+    </tr>
+ <?php } ?>	
+</table>

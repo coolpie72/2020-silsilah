@@ -1,0 +1,140 @@
+<div class="ch-title">Detail Orang - <?= $person->name ?></div>
+
+<?= Util::personEditLink($person->id) ?><br/> <br/>
+
+<b>Profil</b><br/>
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-vert">
+    <tr>
+        <th>Id</th>
+        <td><?= $person->id ?></td>
+    </tr>
+    <tr>
+        <th>Nama</th>
+        <td><?= $person->name ?></td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td><?= Util::displayGenderHtml($person->gender) ?></td>
+    </tr>    
+    <tr>
+        <th>Tempat Lahir</th>
+        <td><?= $person->birthPlace ?></td>
+    </tr>   
+    <tr>
+        <th>Tanggal Lahir</th>
+        <td><?= $person->birthDate ?></td>
+    </tr>   
+    <tr>
+        <th>Tanggal Lahir Ext</th>
+        <td><?= $person->birthDateExt ?></td>
+    </tr>      
+    <tr>
+        <th>Tempat Meninggal</th>
+        <td><?= $person->diePlace ?></td>
+    </tr>   
+    <tr>
+        <th>Tanggal Meninggal</th>
+        <td><?= $person->dieDate ?></td>
+    </tr>     
+    <tr>
+        <th>Tanggal Meninggal Ext</th>
+        <td><?= $person->dieDateExt ?></td>
+    </tr>      
+    <tr>
+        <th>Facebook</th>
+        <td><?= Util::personFacebookLink($person) ?></td>
+    </tr>     
+    <tr>
+        <th>Catatan</th>
+        <td><?= nl2br($person->note) ?></td>
+    </tr>         
+</table>
+
+<br/>
+<b>Orang Tua</b><br/>
+<?php 
+	if ($parentMarriage != null) { 
+?>
+Pernikahan: <?= $parentMarriage->id ?> - <?= Util::marriageDetailLink($parentMarriage->id) ?><br/>
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+    <tr>
+        <th>&nbsp;</th>
+        <th>Peran</th>
+        <th>Nama</th>
+    </tr>
+    <tr>
+        <td><?= Util::personDetailLink($parentMarriage->husbandId) ?></td>
+        <td>Ayah</td>
+        <td><?= $parentMarriage->ext->husband_name ?></td>
+    </tr>
+    <tr>
+        <td><?= Util::personDetailLink($parentMarriage->wifeId) ?></td>
+        <td>Ibu</td>
+        <td><?= $parentMarriage->ext->wife_name ?></td>   
+    </tr>    
+</table>
+<?php } else { ?>
+Belum ada data<br/>
+<?php } ?>
+
+<br/>
+<b>Saudara</b><br/>
+<?php 
+	if ($parentMarriage != null) { 
+?>
+Pernikahan orang tua: <?= $parentMarriage->id ?> - <?= Util::marriageDetailLink($parentMarriage->id) ?><br/>
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+    <tr>
+        <th>&nbsp;</th>
+        <th style="width: 20px">No</th>
+        <th>Nama</th>
+        <th>Gender</th>
+    </tr>
+    
+    <?php foreach($siblings as $sib) { ?>
+      <tr>
+        <td><?= Util::personDetailLinkWithSkip($sib->childId, $id) ?></td>
+        <td style="width: 20px"><?= $sib->number ?></td>
+        <td><?= $sib->ext->person_name ?></td>
+        <td><?= Util::displayGenderHtml($sib->ext->person_gender) ?></td>
+    </tr>  
+    <?php } ?> 
+</table>
+<?php } else { ?>
+Belum ada data<br/>
+<?php } ?>
+
+
+<br/>
+<b>Pasangan</b><br/>
+<?php if ($haveMarriages) {
+ foreach ($marriages as $mrg) { ?>
+Pernikahan: <?= $mrg->id ?> - <?= Util::marriageDetailLink($mrg->id) ?><br/>
+<?= $spouseRole ?>: <?= $mrg->ext->$spouseFieldName?> - <?= Util::personDetailLink($mrg->$spouseFieldId) ?><br/>
+Anak
+<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+    <tr>
+        <th>&nbsp;</th>
+        <th>No</th>
+        <th>Nama</td>
+        <th>Gender</th>
+    </tr>
+    
+    <?php foreach ($marriageChilds[$mrg->id] as $child) { ?>
+      <tr>
+        <td><?= Util::personDetailLink($child->childId) ?></td>
+        <td style="width: 20px"><?= $child->number ?></td>
+        <td><?= $child->ext->person_name ?></td>
+        <td><?= Util::displayGenderHtml($child->ext->person_gender) ?></td>
+    </tr>  
+	<?php } ?>
+</table>	
+ <br/>	
+	<?php } ?>
+	
+<?php } else { ?>
+Belum ada data<br/>
+<?php } ?>    
+
+
+

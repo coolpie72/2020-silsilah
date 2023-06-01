@@ -1,0 +1,21 @@
+<div class="ch-title">Daftar Pelatihan</div>
+
+<p>
+Berikut adalah daftar pelatihan yang kami tawarkan, 
+klik kode pada tiap pilihan untuk melihat deskripsi, audience dan manfaatnya:<br/>
+
+<table class="ch-tab-1" border="0" celllpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <th>Kode</th>
+        <th>Nama</th>
+    </tr>
+    <?php foreach($KURSUS as $link) { ?>
+        <tr>
+            <td><a href="index.php?page=<?= $link[0] ?>"><?= $link[1] ?></a></td>
+            <td><?= $link[2] ?></td>
+        </tr>
+    <?php } ?>	
+</table>
+<br/>
+[TODO] Kursus lainnya ...
+</p>

@@ -1,0 +1,64 @@
+<div class="ch-title"><?= $title ?></div>
+
+<form method="post" action="index.php?page=person-process-add">
+	<input name="op_mode" type="hidden" value="<?= $op_mode ?>">
+	<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+		<tr>
+			<td>Id</td>
+			<td>
+			<?php 
+				if($IS_ADD) {
+			?>
+			<input name="tx_id" type="text" value="<?= $person->id ?>">
+			<?php 
+				} else {
+			?>				
+			<?= $person->id ?> <input name="tx_id" type="hidden" value="<?= $person->id ?>">		
+			<?php 
+				}
+			?>	
+			</td>
+		</tr>
+		<tr>
+			<td>Nama</td>
+			<td><input name="tx_name" style="width: 600px" type="text" value="<?= $person->name ?>"></td>
+		</tr>
+		<tr>
+			<td>Jenis Kelamin</td>
+			<td>
+			<input <?= Util::htmlChecked($person->gender == "M") ?> name="rd_gender" type="radio" value="M">Pria
+			<input <?= Util::htmlChecked($person->gender == "F") ?> name="rd_gender" type="radio" value="F">Wanita </td>
+		</tr>
+		<tr>
+			<td>Tempat Lahir</td>
+			<td>
+				<input name="tx_birth_place" type="text" value="<?= $person->birthPlace ?>">
+				Tanggal Lahir
+				<input name="tx_birth_date" type="text" value="<?= $person->birthDate ?>">
+				Ext
+				<input name="tx_birth_date_ext" type="text" value="<?= $person->birthDateExt ?>">
+			</td>
+		</tr>	
+		<tr>
+			<td>Tempat Meninggal</td>
+			<td><input name="tx_die_place" type="text" value="<?= $person->diePlace ?>">
+				Tanggal Meninggal
+				<input name="tx_die_date" type="text" value="<?= $person->dieDate ?>">
+				Ext
+				<input name="tx_die_date_ext" type="text" value="<?= $person->dieDateExt ?>">
+			</td>
+		</tr>	
+		<tr>
+			<td>Facebook</td>
+			<td><input style="width: 600px" name="tx_facebook" type="text" value="<?= $person->facebook ?>"></td>
+		</tr>		
+		<tr>
+			<td>Catatan</td>
+			<td><textarea name="tx_note" cols="80" rows="10"><?= $person->note ?></textarea></td>
+		</tr>			
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="Submit1" type="submit" value="Simpan"></td>
+		</tr>
+	</table>
+</form>
