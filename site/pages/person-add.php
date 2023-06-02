@@ -1,4 +1,7 @@
 <?php
+use silsilahApp\DBManager;
+use silsilahApp\Person;
+use silsilahApp\PersonService;
 
 //kalo ada id berrati edit
 $id = isset($_GET["id"])? $_GET["id"]: null;

@@ -1,9 +1,8 @@
 <?php
-
-include_once "class.FieldMeta.php";
-include_once "class.ObjectMeta.php";
+namespace silsilahApp;
 
 class Metadata {
+
     public $objects;
 
     private static $instance;
@@ -29,7 +28,7 @@ class Metadata {
 
         $obj = new ObjectMeta();
         $obj->dbTable = "person";
-        $obj->name = "Person";
+        $obj->name = "silsilahApp\\Person";
 
         $obj->addFieldPrimary("id", "string", "id");
         $obj->addField("name", "string", false, "name");
@@ -64,5 +63,3 @@ class Metadata {
 }
 
 //$META = new Metadata();
-
-?>

@@ -1,10 +1,10 @@
 <?php
-class Marriage {
-    public $id;
-    public $husbandId;
-    public $wifeId;
-    public $marriagePlace;
-    public $marriageDate;
+namespace silsilahApp;
+
+class MarriageChild {
+    public $marriageId;
+    public $childId;
+    public $number;
 
     // function __construct($id, $name) {
     //     $this->id = $id; 
@@ -15,5 +15,7 @@ class Marriage {
 
     }
 
+
+
 }
-?>
+

@@ -1,4 +1,5 @@
 <?php
+namespace silsilahApp;
 
 class DBManager {
 
@@ -15,7 +16,7 @@ class DBManager {
 
 
     public function connect() {
-        $this->conn = new mysqli($this->host, $this->user, $this->password, $this->database);
+        $this->conn = new \mysqli($this->host, $this->user, $this->password, $this->database);
     }
 
     public function close() {
@@ -32,4 +33,3 @@ class DBManager {
     
 
 }
-?>

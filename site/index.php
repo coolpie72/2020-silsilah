@@ -5,31 +5,13 @@ ini_set('display_errors', 1);
 
 //bootstrap utk coolpie lib
 require_once "lib/coolpie-lib/coolpie-lib.php";
+require_once "lib/silsilah-lib/silsilah-loader.php";
 
 include "site_data.php";
 include "menu.php";
 
-include_once "lib/class.Util.php";
-include_once "lib/class.DBManager.php";
-
-include_once "lib/class.Metadata.php";
-
-include_once "lib/class.SqlUtil.php";
-
-include_once "lib/class.Person.php";
-include_once "lib/class.PersonService.php";
-
-include_once "lib/class.Marriage.php";
-include_once "lib/class.MarriageService.php";
-
-include_once "lib/class.MarriageChild.php";
-include_once "lib/class.MarriageChildService.php";
-
-include_once "lib/root-test.php";
-
-require_once "lib/content.php";
-
-require_once "lib/app-data.php";
+use silsilahApp\AppData;
+use silsilahApp\Content;
 
 AppData::get()->data['title'] = 'Aplikasi Silsilah';
 

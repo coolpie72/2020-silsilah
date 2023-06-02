@@ -1,4 +1,6 @@
 <?php
+namespace silsilahApp;
+
 class FieldMeta {
     public $name;
     public $type;
@@ -11,4 +13,3 @@ class FieldMeta {
     }
 
 }
-?>

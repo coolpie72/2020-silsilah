@@ -1,4 +1,6 @@
 <?php
+namespace silsilahApp;
+
 class SqlUtil {
     
     function __construct() {
@@ -110,6 +112,5 @@ class SqlUtil {
         return $obj;
 
     }
-
 
 }

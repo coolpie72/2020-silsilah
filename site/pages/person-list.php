@@ -1,4 +1,8 @@
 <?php
+use silsilahApp\DBManager;
+use silsilahApp\AppData;
+use silsilahApp\PersonService;
+
 
 $db = new DBManager();
 $db->connect();

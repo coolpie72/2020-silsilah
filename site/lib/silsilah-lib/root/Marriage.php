@@ -1,8 +1,12 @@
 <?php
-class MarriageChild {
-    public $marriageId;
-    public $childId;
-    public $number;
+namespace silsilahApp;
+
+class Marriage {
+    public $id;
+    public $husbandId;
+    public $wifeId;
+    public $marriagePlace;
+    public $marriageDate;
 
     // function __construct($id, $name) {
     //     $this->id = $id; 
@@ -13,7 +17,4 @@ class MarriageChild {
 
     }
 
-
-
 }
-?>

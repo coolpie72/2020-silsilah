@@ -1,4 +1,5 @@
 <?php
+namespace silsilahApp;
 
 class Content {
 

@@ -1,12 +1,15 @@
 <?php
-    $id = $_GET["id"];
+use silsilahApp\DBManager;
+use silsilahApp\PersonService;
 
-    $db = new DBManager();
-    $db->connect();
+$id = $_GET["id"];
 
-    PersonService::delete($db, $id);
+$db = new DBManager();
+$db->connect();
 
-    $db->close();
+PersonService::delete($db, $id);
 
-    header("Location: index.php?page=person-list");
+$db->close();
+
+header("Location: index.php?page=person-list");
 ?>

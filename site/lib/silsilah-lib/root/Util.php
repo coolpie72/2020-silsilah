@@ -1,8 +1,9 @@
 <?php
+namespace silsilahApp;
+
 use coolpie\date\CDate;
 
 class Util {
-
 
     public static function printVar(&$var) {
         echo "<pre>";
@@ -14,7 +15,6 @@ class Util {
         return uniqid();
     }
 
-    
     public static function displayGender($gender) {
         if ($gender == "M") return "Pria";
         if ($gender == "F") return "Wanita";
@@ -30,7 +30,7 @@ class Util {
     }
 
     public static function addExt(&$obj, $row, $fields) {
-        $obj->ext = new stdClass();
+        $obj->ext = new \stdClass();
         foreach($fields as $f) {
             $obj->ext->$f = $row[$f];
         }
@@ -180,4 +180,3 @@ EOF;
     }
 
 }
-?>

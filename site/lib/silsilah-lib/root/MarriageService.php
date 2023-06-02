@@ -1,4 +1,6 @@
 <?php
+namespace silsilahApp;
+
 class MarriageService {
     public static function getList(&$db) {
         $list =  array();
@@ -148,4 +150,3 @@ class MarriageService {
     }       
 
 }
-?>

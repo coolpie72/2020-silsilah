@@ -1,5 +1,8 @@
 <?php
+namespace silsilahApp;
+
 class ObjectMeta {
+    
     public $fields;
     public $dbTable;
     public $name;
@@ -31,4 +34,4 @@ class ObjectMeta {
     }
 
 }
-?>
+

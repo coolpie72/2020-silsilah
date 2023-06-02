@@ -1,5 +1,8 @@
 <?php
+namespace silsilahApp;
+
 class PersonService {
+    
     public static function getList(&$db) {
         $list =  array();
         
@@ -118,4 +121,4 @@ EOT;
     }
 
 }
-?>
+

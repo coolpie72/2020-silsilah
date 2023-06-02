@@ -1,5 +1,8 @@
 <?php
+namespace silsilahApp;
+
 class Person {
+    
     public $id;
     public $name;
     public $gender;
@@ -46,4 +49,4 @@ class Person {
     }
 
 }
-?>
+

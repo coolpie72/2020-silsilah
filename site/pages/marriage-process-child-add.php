@@ -1,22 +1,26 @@
 <?php
-    // var_dump($_POST);
+use silsilahApp\DBManager;
+use silsilahApp\MarriageChildService;
+use silsilahApp\MarriageChild;
 
-    $marriage_id = $_POST["tx_marriage_id"];
-    $child_id = $_POST["tx_child_id"];
-    $child_num = $_POST["tx_child_num"];
+// var_dump($_POST);
 
-    $marriageChild = new MarriageChild();
-    $marriageChild->marriageId = $marriage_id;
-    $marriageChild->childId = $child_id;
-    $marriageChild->number = $child_num;
+$marriage_id = $_POST["tx_marriage_id"];
+$child_id = $_POST["tx_child_id"];
+$child_num = $_POST["tx_child_num"];
+
+$marriageChild = new MarriageChild();
+$marriageChild->marriageId = $marriage_id;
+$marriageChild->childId = $child_id;
+$marriageChild->number = $child_num;
 
 
-    $db = new DBManager();
-    $db->connect();
+$db = new DBManager();
+$db->connect();
 
-    MarriageChildService::save($db, $marriageChild);
+MarriageChildService::save($db, $marriageChild);
 
-    $db->close();
+$db->close();
 
-    header("Location: index.php?page=marriage-detail&id=$marriage_id");
+header("Location: index.php?page=marriage-detail&id=$marriage_id");
 ?>

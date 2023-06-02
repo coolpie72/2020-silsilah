@@ -1,5 +1,8 @@
 <?php
+namespace silsilahApp;
+
 class MarriageChildService {
+    
     public static function getListWithDetail(&$db, $marriageId) {
         $list =  array();
  
@@ -130,4 +133,3 @@ class MarriageChildService {
     }       
 
 }
-?>
