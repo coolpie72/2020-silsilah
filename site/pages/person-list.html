@@ -7,16 +7,16 @@
         <th>Nama</th>
         <th>FB</th>
         <th>Gender</th>
-        <th>Tanggal Lahir</th>
-        <th>Tanggal Lahir Ext</th>
         <th>Tempat Lahir</th>
+        <th>Tanggal Lahir</th>        
         <th>Tempat Meninggal</th>
+        <th>Tanggal Meninggal</th>    
         <th>Catatan</th>
     </tr>
     
 <?php 
     foreach ($list as $person) { 
-        $clsDied = $person->isDied() ? 'class="ch-row-died"' : '';
+        $clsDied = Util::getDiedClass($person);
 ?>
      <tr <?= $clsDied ?>>
         <td>
@@ -29,10 +29,10 @@
         <td><?= $person->name ?></td>
         <td><?= personListFacebookLink($person)?></td>
         <td><?= Util::displayGenderHtml($person->gender) ?></td>
-        <td><?= $person->birthDate ?></td>
-        <td><?= $person->birthDateExt ?></td>
         <td><?= $person->birthPlace ?></td>
+        <td><?= Util::personDisplayBirthDate($person) ?></td>
         <td><?= $person->diePlace ?></td>
+        <td><?= Util::personDisplayDieDate($person) ?></td>
         <td><?= Util::cutText($person->note, 30) ?></td>
      
     </tr>

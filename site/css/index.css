@@ -41,7 +41,6 @@ body * {
 }
 
 
-
 .ch-cell-page a{
     text-decoration: none;
 }
@@ -135,16 +134,16 @@ body * {
     text-decoration: underline;
 }
 
-.ch-tab-1{
+.ch-tab-1 {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
 
-.ch-tab-1 th{
+.ch-tab-1 th {
     background-color: #eeeeee;
 }
 
-.ch-tab-1 th, .ch-tab-1 td{
+.ch-tab-1 th, .ch-tab-1 td {
     padding: 5px;
     border-top: 1px solid black;
     border-left: 1px solid black;

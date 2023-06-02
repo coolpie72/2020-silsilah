@@ -2,6 +2,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+
+//bootstrap utk coolpie lib
+require_once "lib/coolpie-lib/coolpie-lib.php";
+
 include "site_data.php";
 include "menu.php";
 
@@ -31,7 +35,8 @@ AppData::get()->data['title'] = 'Aplikasi Silsilah';
 
 
 //page default: home
-$page = "home";
+//sementara arahkan ke person-list
+$page = "person-list";
 
 //override page dari query parameter "page"
 if (isset($_GET['page'])){

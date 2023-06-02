@@ -1,6 +1,8 @@
 <?php
+    use coolpie\date\CDate;
 
-    function printIndent($level) {
+    function getIndent($level) {
+        $text = "";
         $c = $level;
         $len = 0;
         while ($c > 0) {
@@ -9,13 +11,14 @@
             $c--;
         }
         if ($len !== 0) {
-            echo '<span style="margin-left: ' . $len . 'px"></span>';
+            $text = '<span style="margin-left: ' . $len . 'px"></span>';
         }
-        echo " ";
+        return $text;
     }
 
     
 
+    $now = CDate::create()->fromNow();
 
     //root id
     $id = $_GET["id"];
@@ -38,22 +41,30 @@
     $arr = [];
     array_push($arr, $root);
 
-    
-
-
-
+    Util::table1Start();
     while (!empty($arr)) {
         $node = array_shift($arr);
 
-        printIndent($node->level);
+
+        $text = getIndent($node->level);
+        $text .= "L{$node->level}. ";
         $person = $personCache->get($node->id);
         
-        echo $person->name;
-        echo " - " . Util::personDetailLink($person->id);
-        if ($person->facebook !== null) {
-            echo " - " . Util::personFacebookLink($person);
+        $text .= $person->name;
+        $ageLabel = Util::getAgeLabel($person, $now);
+        if ($ageLabel) {
+            $text .= " - " . $ageLabel;
         }
-        echo '<br>';
+        $text .= " - " . Util::personDetailLink($person->id);
+        if ($person->facebook !== null) {
+            $text .= " - " . Util::personFacebookLink($person);
+        }
+
+        $clsDied = Util::getDiedClass($person);
+
+        Util::tableRowStart([$clsDied]);
+        Util::tableCell($text);
+        Util::tableRowEnd();
         
         $rowChilds = PersonService::getChilds($db, $node->id);
         // Util::printVar($rowChilds);die;
@@ -73,6 +84,7 @@
         }
 
     }
+    Util::tableEnd();
 
 
     // var_dump($person);

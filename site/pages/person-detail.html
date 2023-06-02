@@ -1,6 +1,8 @@
 <div class="ch-title">Detail Orang - <?= $person->name ?></div>
 
-<?= Util::personEditLink($person->id) ?><br/> <br/>
+<?= Util::personEditLink($person->id) ?> | 
+<?= Util::personRootLink($person->id) ?>
+<br/> <br/>
 
 <b>Profil</b><br/>
 <table border="0" cellpadding="0" cellspacing="0" class="ch-tab-vert">

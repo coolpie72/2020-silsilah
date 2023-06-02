@@ -42,7 +42,7 @@ class Person {
     }
 
     public function isDied() {
-        return $this->diePlace !== null;
+        return $this->diePlace !== null || $this->dieDate !== null || $this->dieDateExt !== null;
     }
 
 }

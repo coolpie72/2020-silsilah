@@ -11,11 +11,11 @@
 // <a href="index.php?page=consulting">IT Consultation</a><br>
 
 
-$MENU = array();
-$MENU[] = array("person-list", "Daftar Orang");
-$MENU[] = array("person-add", "Tambah Orang");
-$MENU[] = array("marriage-list", "Daftar Pernikahan");
-$MENU[] = array("marriage-add", "Tambah Pernikahan");
+$MENU = [];
+$MENU[] = ["person-list", "Daftar Orang"];
+$MENU[] = ["person-add", "Tambah Orang"];
+$MENU[] = ["marriage-list", "Daftar Pernikahan"];
+$MENU[] = ["marriage-add", "Tambah Pernikahan"];
 
 // $MENU[] = array("profil", "Profil");
 // $MENU[] = array("testimoni", "Testimoni");
