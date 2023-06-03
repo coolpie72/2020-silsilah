@@ -1,5 +1,5 @@
 <?php
-namespace silsilahApp;
+namespace silsilahApp\metadata;
 
 class ObjectMeta {
     

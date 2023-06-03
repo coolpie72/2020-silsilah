@@ -1,6 +1,8 @@
 <?php
 namespace silsilahApp;
 
+use silsilahApp\metadata\Metadata;
+
 class SqlUtil {
     
     function __construct() {

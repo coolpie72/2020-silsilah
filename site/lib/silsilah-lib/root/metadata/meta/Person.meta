@@ -1,0 +1,20 @@
+
+# hdr:<db-table>:<class>:
+hdr:person:silsilahApp\Person:
+
+# field:<prop>:<type>:<db-field>:<nullable>:<pk>:
+# nullable: y atau n
+# pk: pk atau kosong
+
+field:id:string:id:n:pk:
+field:name:string:name:n::
+field:gender:string:name:n::
+field:birthDate:date:birth_date:y::
+field:birthDateExt:string:birth_date_ext:y::
+field:birthPlace:string:birth_place:y::
+field:note:string:note:y::
+field:facebook:string:facebook:y::
+field:dieDate:date:die_date:y::
+field:dieDateExt:string:die_date_ext:y::
+field:diePlace:string:die_place:y::
+

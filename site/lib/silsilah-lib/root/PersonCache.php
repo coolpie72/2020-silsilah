@@ -2,6 +2,7 @@
 namespace silsilahApp;
 
 class PersonCache {
+    
     private $cache = [];
 
     public function __construct(&$db) {
