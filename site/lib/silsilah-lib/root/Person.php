@@ -15,12 +15,7 @@ class Person {
     public $dieDateExt;
     public $diePlace;
 
-    // function __construct($id, $name) {
-    //     $this->id = $id; 
-    //     $this->name = $name;
-    // }
-
-    function __construct() {
+    public function __construct() {
 
     }
 

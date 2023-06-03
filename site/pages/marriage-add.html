@@ -1,23 +1,36 @@
-<div class="ch-title">Tambah Pernikahan</div>
+<?php
+use silsilahApp\Util;
+
+?>
+<div class="ch-title"><?= $title ?></div>
 
 <form method="post" action="index.php?page=marriage-process-add">
+	
+	<input name="op_mode" type="hidden" value="<?= $op_mode ?>">
+	<input name="marriage_id" type="hidden" value="<?= $id ?>">
+
 	<table border="0" cellpadding="0" cellspacing="0" class="ch-tab-1">
+
 		<tr>
 			<td>Id Suami</td>
-			<td><input name="tx_husband_id" type="text"></td>
+     		<td><input name="tx_husband_id" type="text" value="<?= $marriage->husbandId ?>"></td>
 		</tr>
 		<tr>
 			<td>Id Istri</td>
-			<td><input name="tx_wife_id" type="text"></td>
+			<td><input name="tx_wife_id" type="text" value="<?= $marriage->wifeId ?>"></td>
 		</tr>
 		<tr>
 			<td>Tempat Nikah</td>
-			<td><input name="tx_mrg_place" type="text"></td>
+			<td><input name="tx_mrg_place" type="text" value="<?= $marriage->marriagePlace ?>"></td>
 		</tr>
 		<tr>
 			<td>Tanggal Nikah</td>
-			<td><input name="tx_mrg_date" type="text"></td>
+			<td><input name="tx_mrg_date" type="text" value="<?= $marriage->marriageDate ?>"></td>
 		</tr>
+		<tr>
+			<td>Catatan</td>
+			<td><textarea name="tx_note" cols="80" rows="10"><?= $marriage->note ?></textarea></td>
+		</tr>	
 		<tr>
 			<td>&nbsp;</td>
 			<td><input name="Submit1" type="submit" value="Simpan"></td>

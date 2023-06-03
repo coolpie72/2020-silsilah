@@ -2,19 +2,24 @@
 namespace silsilahApp;
 
 class Marriage {
+
     public $id;
     public $husbandId;
     public $wifeId;
     public $marriagePlace;
     public $marriageDate;
+    public $note;
 
-    // function __construct($id, $name) {
-    //     $this->id = $id; 
-    //     $this->name = $name;
-    // }
+    public function __construct() {
 
-    function __construct() {
+    }
 
+    public function initDefault() {
+        $this->husbandId = null;
+        $this->wifeId = null;
+        $this->marriagePlace = null;
+        $this->marriageDate = null;
+        $this->note = null;
     }
 
 }

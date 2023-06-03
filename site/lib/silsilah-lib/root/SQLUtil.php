@@ -50,13 +50,13 @@ class SqlUtil {
 
         }
 
-        $strFields = implode(",", $partFields);
+        $strFields = implode(", ", $partFields);
         $strIds = implode(" and ", $partIds);
 
 
         $sql = "update {$objMeta->dbTable} set $strFields where $strIds";
 
-        var_dump($sql);
+        // var_dump($sql);
         return $sql;
     }
 

@@ -11,7 +11,6 @@ $db->connect();
 
 $marriage = MarriageService::load($db, $id);
 
-
 $husband = PersonService::load($db, $marriage->husbandId);
 
 $wife = PersonService::load($db, $marriage->wifeId);

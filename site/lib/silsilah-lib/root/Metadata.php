@@ -46,13 +46,14 @@ class Metadata {
 
         $obj = new ObjectMeta();
         $obj->dbTable = "marriage";
-        $obj->name = "Marriage";
+        $obj->name = "silsilahApp\\Marriage";
 
         $obj->addFieldPrimary("id", "string", "id");
         $obj->addField("husbandId", "string", false, "husband_id");
         $obj->addField("wifeId", "string", false, "wife_id");
         $obj->addField("marriagePlace", "date", true, "mrg_place");
         $obj->addField("marriageDate", "string", true, "mrg_date");
+        $obj->addField("note", "string", true, "note");
 
         $this->objects["Marriage"] = $obj;        
 
