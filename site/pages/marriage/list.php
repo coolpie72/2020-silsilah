@@ -13,6 +13,6 @@ $list = MarriageService::getListWithDetail($db);
 $db->close();
 
 
-include "marriage-list.html";
+include "list.html";
 
 ?>

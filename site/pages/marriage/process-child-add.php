@@ -22,5 +22,5 @@ MarriageChildService::save($db, $marriageChild);
 
 $db->close();
 
-header("Location: index.php?page=marriage-detail&id=$marriage_id");
+header("Location: index.php?page=marriage/detail&id=$marriage_id");
 ?>

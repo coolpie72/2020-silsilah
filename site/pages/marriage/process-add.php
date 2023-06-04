@@ -38,5 +38,5 @@ if ($op_mode === "add") {
 
 $db->close();
 
-header("Location: index.php?page=marriage-list");
+header("Location: index.php?page=marriage/list");
 ?>

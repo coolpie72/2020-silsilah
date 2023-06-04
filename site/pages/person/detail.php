@@ -43,7 +43,7 @@ foreach ($marriages as $m) {
 $db->close();
 
 
-include "person-detail.html";
+include "detail.html";
  
 ?>
 

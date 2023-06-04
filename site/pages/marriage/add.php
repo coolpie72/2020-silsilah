@@ -30,6 +30,6 @@ if (!$IS_ADD) {
 }
 
 
-include "marriage-add.html";
+include "add.html";
 
 ?>

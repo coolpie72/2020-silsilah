@@ -19,7 +19,7 @@ function marriageDetailProcess_order(){
 
     $db->close();
 
-    header("Location: index.php?page=marriage-detail&id=$marriageId");
+    header("Location: index.php?page=marriage/detail&id=$marriageId");
 }
 
 //action: del
@@ -35,7 +35,7 @@ function marriageDetailProcess_del(){
 
     $db->close();
 
-    header("Location: index.php?page=marriage-detail&id=$marriageId");
+    header("Location: index.php?page=marriage/detail&id=$marriageId");
 }    
 
 

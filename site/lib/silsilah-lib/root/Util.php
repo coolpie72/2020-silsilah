@@ -75,7 +75,7 @@ class Util {
     }   
 
     public static function personEditLink($personId) {
-        return "<a href=\"index.php?page=person-add&id=$personId\">Ubah</a>";
+        return "<a href=\"index.php?page=person/add&id=$personId\">Ubah</a>";
     }   
 
     public static function personRootLink($id) {
@@ -83,16 +83,16 @@ class Util {
     }   
 
     public static function personDetailLink($id) {
-        return "<a href=\"index.php?page=person-detail&id=$id\">Rinci</a>";
+        return "<a href=\"index.php?page=person/detail&id=$id\">Rinci</a>";
     }   
 
     public static function personDetailLinkWithSkip($id, $skipId) {
         if ($id == $skipId) return "";
-        return "<a href=\"index.php?page=person-detail&id=$id\">Rinci</a>";
+        return "<a href=\"index.php?page=person/detail&id=$id\">Rinci</a>";
     }       
 
     public static function marriageDetailLink($marriageId) {
-        return "<a href=\"index.php?page=marriage-detail&id=$marriageId\">Rinci</a>";
+        return "<a href=\"index.php?page=marriage/detail&id=$marriageId\">Rinci</a>";
     } 
 
     public static function floorPercentage($num, $pct) {

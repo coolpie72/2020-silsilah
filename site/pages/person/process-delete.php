@@ -11,5 +11,5 @@ PersonService::delete($db, $id);
 
 $db->close();
 
-header("Location: index.php?page=person-list");
+header("Location: index.php?page=person/list");
 ?>

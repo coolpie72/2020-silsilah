@@ -48,6 +48,6 @@ if ($op_mode == "edit") {
 
 $db->close();
 
-header("Location: index.php?page=person-detail&id=$id");
+header("Location: index.php?page=person/detail&id=$id");
 // header("Location: index.php?page=person-list");
 ?>

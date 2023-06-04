@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 
 //bootstrap utk coolpie lib
 require_once "lib/coolpie-lib/coolpie-lib.php";
+require_once "lib/coolpie-lib/coolpie-loader.php";
 require_once "lib/silsilah-lib/silsilah-loader.php";
 
 include "site_data.php";
@@ -26,7 +27,7 @@ if (isset($_GET['page'])){
 }
 
 //default: hello
-$file = "pages/profil.html";
+$file = "pages/default.php";
 if (file_exists("pages/$page.php")){
 	$file = "pages/$page.php";
 }

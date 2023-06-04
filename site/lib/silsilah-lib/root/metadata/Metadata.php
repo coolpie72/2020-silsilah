@@ -1,18 +1,21 @@
 <?php
 namespace silsilahApp\metadata;
 
-use coolpie\cache\SimpleCache;
+use coolpie\cache\SimpleCacheClosure;
 use coolpie\file\FileUtil;
-use coolpie\map\ArrayMap;
 
 class Metadata {
 
-    public $objects;
+    private $metaCache;
 
     private static $instance;
 
     function __construct() {
-        $this->objects = [];
+        $me = $this;
+        $providerFunc = function ($key) use ($me) {
+            return $me->loadMeta($key);
+        };
+        $this->metaCache = new SimpleCacheClosure($providerFunc);
     }
 
     public static function get() {
@@ -24,29 +27,14 @@ class Metadata {
     }
 
     public function getObject($name) {
-        if (array_key_exists($name, $this->objects)) {
-            return $this->objects[$name];
-        }
-        $this->loadMeta($name);
-        return $this->objects[$name];
+        return $this->metaCache->get($name);
     }   
 
     private function loadMeta($name) {
         $objMetaReader = new ObjectMetaReader();
         $file = FileUtil::joinPath(__DIR__, "meta", "{$name}.meta");
         $obj = $objMetaReader->read($file);
-        $this->objects[$name] = $obj;
+        return $obj;
     }
 
-    // private function init() {
-    //     $this->objects = [];
-
-    //     $this->loadMeta("Person");
-
-    //     $this->loadMeta("Marriage");
-
-    // }
-
 }
-
-//$META = new Metadata();

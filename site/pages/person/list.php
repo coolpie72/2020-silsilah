@@ -21,7 +21,7 @@ function personListFacebookLink($person) {
 }   
 
 
-include "person-list.html";
+include "list.html";
 
 
 ?>

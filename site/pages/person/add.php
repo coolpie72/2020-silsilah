@@ -35,6 +35,6 @@ if (!$IS_ADD) {
 
 }
 
-include "person-add.html";
+include "add.html";
 
 ?>
