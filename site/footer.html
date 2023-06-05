@@ -1,4 +1,10 @@
-<td class="ch-cell-footer">&copy; Coolpie Consulting - Last update: <?= $SITE["LAST_UPDATE"] ?><br/>
+<?php 
+use silsilahApp\Util;
+
+$hideFooter = Util::getHaveParam('hide_footer') || Util::getHaveParam('full_mode');
+$hideFooterCls = $hideFooter ? "ch-hidden" : "";
+?>
+<td class="ch-cell-footer <?= $hideFooterCls ?>">&copy; Coolpie Consulting - Last update: <?= $SITE["LAST_UPDATE"] ?><br/>
 <small>Handmade with PHP, HTML, CSS</small>    
 
 </td>

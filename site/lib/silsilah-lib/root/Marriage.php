@@ -9,6 +9,7 @@ class Marriage {
     public $marriagePlace;
     public $marriageDate;
     public $note;
+    public $num;
 
     public function __construct() {
 
@@ -20,6 +21,7 @@ class Marriage {
         $this->marriagePlace = null;
         $this->marriageDate = null;
         $this->note = null;
+        $this->num = 0;
     }
 
 }

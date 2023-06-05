@@ -14,6 +14,7 @@ $marriage_date = Util::formProcessStringNull($_POST["tx_mrg_date"]);
 $marriage_place = Util::formProcessStringNull($_POST["tx_mrg_place"]);
 $note = Util::formProcessStringNull($_POST["tx_note"]);
 $marriage_id = $_POST["marriage_id"];
+$marriage_num = Util::formProcessInt($_POST["tx_num"], 0);
 
 $db = new DBManager();
 $db->connect();
@@ -24,6 +25,7 @@ $marriage->wifeId = $wife_id;
 $marriage->marriageDate = $marriage_date;
 $marriage->marriagePlace = $marriage_place;
 $marriage->note = $note;
+$marriage->num = $marriage_num;
 
 if ($op_mode === "add") {
     $marriage->id = Util::generateId();

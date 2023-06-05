@@ -51,11 +51,23 @@ class Util {
     }    
 
     public static function formProcessStringNull($val) {
-        if ($val == null) return null;
+        if ($val === null) return null;
         $str = trim($val);
-        if ($str == "") return null;
+        if ($str === "") return null;
 
         return $str;
+    }
+
+
+    public static function formProcessInt($val, $defaultValue) {
+        if ($val === null) return $defaultValue;
+
+        $str = trim($val);
+        
+        if ($str === "") return $defaultValue;
+        $intVal = (int) $str;
+
+        return $intVal;
     }
 
     public static function cutText($val, $max) {
@@ -178,5 +190,17 @@ EOF;
         return "M" . $comp["years"];
 
     }
+
+    public static function getHaveParam($name) {
+        return isset($_GET[$name]);
+    }
+
+    public static function getHaveParamValue($name, $value) {
+        if (!self::getHaveParam($name)) return false;
+        return $_GET[$name] === $value;
+    }
+
+
+
 
 }

@@ -190,3 +190,7 @@ body * {
 .ch-row-died {
     background-color: #dddddd;
 }
+
+.ch-hidden {
+    display: none;
+}

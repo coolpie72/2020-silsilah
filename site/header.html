@@ -1,1 +1,7 @@
-<td class="ch-cell-header">Aplikasi Silsilah</td>
+<?php 
+use silsilahApp\Util;
+
+$hideHeader = Util::getHaveParam('hide_header') || Util::getHaveParam('full_mode');
+$hideHeaderCls = $hideHeader ? "ch-hidden" : "";
+?>
+<td class="ch-cell-header <?= $hideHeaderCls ?>">Aplikasi Silsilah</td>

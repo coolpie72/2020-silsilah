@@ -7,3 +7,5 @@ select * from marriage_child where marriage_id = '6479cfe77584f';
 select * from marriage_child where marriage_id = '647a758219eac'; 
 
 select * from marriage where husband_id = 'mm-bernard';
+
+SELECT * FROM marriage;

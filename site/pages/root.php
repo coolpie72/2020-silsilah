@@ -22,6 +22,23 @@ function getIndent($level) {
     return $text;
 }
 
+//opt[print]=1
+//artinya jika set, maka print mode, minimal embel2
+
+//opt[age]=0
+//artinya disable show age
+
+$OPT = [];
+$OPT['print'] = false;
+if (isset($_GET['opt']) && isset($_GET['opt']['print'])) {
+    $OPT['print'] = true;
+}
+
+$OPT['age'] = true;
+if (isset($_GET['opt']) && isset($_GET['opt']['age']) && $_GET['opt']['age'] === '0') {
+    $OPT['age'] = false;
+}
+
 
 
 $now = CDate::create()->fromNow();
@@ -36,8 +53,10 @@ $personCache = new PersonCache($db);
 
 $rootPerson = $personCache->get($id);
 
+
 AppData::get()->data['title'] = "Hirarki Orang: {$rootPerson->name}";
 
+echo '<div align="center">';
 echo '<div class="ch-title">Hirarki Orang: ' . $rootPerson->name . '</div>';
 
 //build node
@@ -57,13 +76,18 @@ while (!empty($arr)) {
     $person = $personCache->get($node->id);
     
     $text .= $person->name;
-    $ageLabel = Util::getAgeLabel($person, $now);
-    if ($ageLabel) {
-        $text .= " - " . $ageLabel;
+
+    if ($OPT['age']) {
+        $ageLabel = Util::getAgeLabel($person, $now);
+        if ($ageLabel) {
+            $text .= " - " . $ageLabel;
+        }    
     }
-    $text .= " - " . Util::personDetailLink($person->id);
-    if ($person->facebook !== null) {
-        $text .= " - " . Util::personFacebookLink($person);
+    if (!$OPT['print']) {
+        $text .= " - " . Util::personDetailLink($person->id);
+        if ($person->facebook !== null) {
+            $text .= " - " . Util::personFacebookLink($person);
+        }    
     }
 
     $clsDied = Util::getDiedClass($person);
@@ -92,6 +116,10 @@ while (!empty($arr)) {
 }
 Util::tableEnd();
 
+$now = CDate::create()->fromNowWib();
+echo "<br/>";
+echo "Dihasilkan oleh Aplikasi Silsilah - {$now->toLiteral()} WIB<br/>";
+echo '</div>';
 
 // var_dump($person);
 

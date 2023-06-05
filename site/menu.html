@@ -1,5 +1,11 @@
+<?php 
+use silsilahApp\Util;
+
+$hideMenu = Util::getHaveParam('hide_menu') || Util::getHaveParam('full_mode');
+$hideMenuCls = $hideMenu ? "ch-hidden" : "";
+?>
 <!-- MENU SECTION -->
-<td class="ch-cell-menu" valign="top">
+<td class="ch-cell-menu <?= $hideMenuCls ?>" valign="top">
     <div class="ch-menu-border">
         <div class="ch-menu">
             <?php foreach ($MENU as $link) { ?>
