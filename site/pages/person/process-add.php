@@ -38,12 +38,12 @@ $person->diePlace = $diePlace;
 $db = new DBManager();
 $db->connect();
 
-if ($op_mode == "add") {
-    PersonService::save($db, $person);
-} 
-else
-if ($op_mode == "edit") {
-    PersonService::update($db, $person);
+$personService = new PersonService($db);
+
+if ($op_mode === "add") {
+    $personService->save($person);
+} else if ($op_mode === "edit") {
+    $personService->update($person);
 }    
 
 $db->close();

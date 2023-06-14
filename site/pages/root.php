@@ -1,5 +1,6 @@
 <?php
 use coolpie\date\CDate;
+use silsilahApp\AdoptionService;
 use silsilahApp\DBManager;
 use silsilahApp\PersonCache;
 use silsilahApp\AppData;
@@ -49,7 +50,10 @@ $id = $_GET["id"];
 $db = new DBManager();
 $db->connect();
 
-$personCache = new PersonCache($db);
+$personService = new PersonService($db);
+$adoptionService = new AdoptionService($db);
+
+$personCache = new PersonCache($personService);
 
 $rootPerson = $personCache->get($id);
 
@@ -96,17 +100,27 @@ while (!empty($arr)) {
     Util::tableCell($text);
     Util::tableRowEnd();
     
-    $rowChilds = PersonService::getChilds($db, $node->id);
+    $rowChilds = $personService->getChilds($node->id);
     // Util::printVar($rowChilds);die;
 
     // echo "[{$node->id}] childs: " . count($rowChilds) . "<br>";
-
-    if (empty($rowChilds)) continue;
 
     foreach ($rowChilds as $rc) {
         // Util::printVar($rc);die;
         $node->add($rc['child_id'], $rc);
     }
+
+    //add adopted childs
+    //NOTE: batasan: adopted child selalu di letakkan di bawah marriage child jika ada
+    $adoptedChildIds = $adoptionService->getChildIds($node->id);
+    foreach ($adoptedChildIds as $childId) {
+        // Util::printVar($rc);die;
+        $node->add($childId, null);
+    }
+
+    //tidak ada proses
+    if ($node->childCount() === 0) continue;
+    
 
     $childsReverse = $node->getChildsReverse();
     foreach ($childsReverse as $nc) {

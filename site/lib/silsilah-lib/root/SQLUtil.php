@@ -9,6 +9,53 @@ class SqlUtil {
         
     }   
 
+    private static function getStrIdsCondition($objMeta, $idObject) {
+        
+        $idFields = $objMeta->getIdFields();
+
+        // var_dump($idFields);die;
+        // var_dump($idObject);
+
+        $partIds = [];
+        foreach ($idFields as $idField) {
+            $fieldMeta = $objMeta->fields[$idField];
+            // var_dump($fieldMeta);
+            $val = self::getSqlValue($fieldMeta, $idObject->{$fieldMeta->name});
+            $partIds[] = "{$fieldMeta->dbField} = {$val}";
+        }
+        $strIds = implode(" and ", $partIds);
+
+        return $strIds;
+    }
+
+    public static function getLoad($metaName, $idObject) {
+
+        $objMeta = Metadata::get()->getObject($metaName);
+
+        $strIds = self::getStrIdsCondition($objMeta, $idObject);
+
+        $sql = "select * from {$objMeta->dbTable} where {$strIds}";
+
+        // var_dump($sql);die;
+
+        return $sql;
+
+    }
+
+    public static function getDelete($metaName, $idObject) {
+
+        $objMeta = Metadata::get()->getObject($metaName);
+
+        $strIds = self::getStrIdsCondition($objMeta, $idObject);
+
+        $sql = "delete from {$objMeta->dbTable} where {$strIds}";
+
+        // var_dump($sql);die;
+
+        return $sql;
+
+    }
+
     public static function getInsert($obj, $data) {
         //insert into table (c1, c2, c3) values(v1, v2, v3)
 

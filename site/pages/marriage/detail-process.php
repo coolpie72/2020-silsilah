@@ -14,8 +14,9 @@ function marriageDetailProcess_order(){
 
     $db = new DBManager();
     $db->connect();
+    $marriageChildService = new MarriageChildService($db);
 
-    MarriageChildService::modifyOrder($db, $marriageId, $act == "up", $curr);
+    $marriageChildService->modifyOrder($marriageId, $act === "up", $curr);
 
     $db->close();
 
@@ -30,8 +31,9 @@ function marriageDetailProcess_del(){
 
     $db = new DBManager();
     $db->connect();
+    $marriageChildService = new MarriageChildService($db);
 
-    MarriageChildService::deleteOrder($db, $marriageId, $curr, $count);
+    $marriageChildService->deleteOrder($marriageId, $curr, $count);
 
     $db->close();
 

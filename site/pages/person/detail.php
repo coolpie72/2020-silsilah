@@ -1,4 +1,6 @@
 <?php
+
+use silsilahApp\AdoptionService;
 use silsilahApp\DBManager;
 use silsilahApp\AppData;
 use silsilahApp\PersonService;
@@ -10,22 +12,26 @@ $id = $_GET["id"];
 $db = new DBManager();
 $db->connect();
 
-$person = PersonService::load($db, $id);
+$personService = new PersonService($db);
+$marriageService = new MarriageService($db);
+$marriageChildService = new MarriageChildService($db);
+
+$person = $personService->load($id);
 
 AppData::get()->data['title'] = "Rincian Orang: {$person->name}";
 
 //parent info
-$parentMarriages = MarriageService::getParentOf($db, $id);
+$parentMarriages = $marriageService->getParentOf($id);
 $parentMarriage = count($parentMarriages) == 1 ? $parentMarriages[0] : null;
 
 //siblings info
 $parentMarriageId = $parentMarriage == null ? null : $parentMarriage->id;
 $siblings = array();
-$siblings = MarriageChildService::getListWithDetail($db, $parentMarriageId);
+$siblings = $marriageChildService->getListWithDetail($parentMarriageId);
 
 
 //marriages
-$marriages = MarriageService::getMarriages($db, $person->id, $person->gender);
+$marriages = $marriageService->getMarriages($person->id, $person->gender);
 $haveMarriages = count($marriages) > 0;
 $spouseRole = null;
 if ($haveMarriages) {
@@ -35,10 +41,16 @@ if ($haveMarriages) {
 }
 
 //childs, store in assoc array
-$marriageChilds = array();
+$marriageChilds = [];
 foreach ($marriages as $m) {
-    $marriageChilds[$m->id] = MarriageChildService::getListWithDetail($db, $m->id);
+    $marriageChilds[$m->id] = $marriageChildService->getListWithDetail($m->id);
 }
+
+//adoptions
+$adoptionService = new AdoptionService($db);
+$adoptedChilds = $adoptionService->getChildsWithDetail($person->id);
+$haveAdoptedChild = count($adoptedChilds) > 0;
+
 
 $db->close();
 

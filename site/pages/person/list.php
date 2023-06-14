@@ -9,7 +9,8 @@ $db->connect();
 
 AppData::get()->data['title'] = "Daftar Orang";
 
-$list = PersonService::getList($db);
+$personService = new PersonService($db);
+$list = $personService->getList();
 
 //var_dump($list);
 

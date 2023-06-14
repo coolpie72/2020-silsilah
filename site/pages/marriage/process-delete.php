@@ -2,18 +2,16 @@
 use silsilahApp\DBManager;
 use silsilahApp\MarriageService;
 
+$id = $_GET["id"];
+
 $db = new DBManager();
 $db->connect();
 
 $marriageService = new MarriageService($db);
 
-$list = $marriageService->getListWithDetail();
-
-//var_dump($list);
+$marriageService->delete($id);
 
 $db->close();
 
-
-include "list.html";
-
+header("Location: index.php?page=marriage/list");
 ?>

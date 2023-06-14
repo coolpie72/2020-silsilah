@@ -6,9 +6,11 @@ class ObjectMeta {
     public $fields;
     public $dbTable;
     public $name;
+    public $ids;
 
     function __construct() {
-        $this->fields = array();
+        $this->fields = [];
+        $this->ids = [];
     }
 
     public function addFieldPrimary($name, $type, $dbField) {
@@ -20,6 +22,13 @@ class ObjectMeta {
         $f->dbField = $dbField;
 
         $this->fields[$name] = $f;
+
+        //mark id field by name
+        $this->ids[$name] = 1;
+    }
+
+    public function getIdFields() {
+        return array_keys($this->ids);
     }
 
     public function addField($name, $type, $nullable, $dbField) {

@@ -7,7 +7,9 @@ $id = $_GET["id"];
 $db = new DBManager();
 $db->connect();
 
-PersonService::delete($db, $id);
+$personService = new PersonService($db);
+
+$personService->delete($id);
 
 $db->close();
 

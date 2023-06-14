@@ -1,0 +1,16 @@
+
+# hdr:<db-table>:<class>:
+hdr:adoption:silsilahApp\Adoption:
+
+# field:<prop>:<type>:<db-field>:<nullable>:<pk>:
+# nullable: y atau n
+# pk: pk atau kosong
+
+field:parentId:string:parent_id:n:pk:
+field:childId:string:child_id:n:pk:
+field:adoptPlace:string:adopt_place:y::
+field:adoptDate:date:adopt_date:y::
+field:num:int:num:n::
+field:note:string:note:y::
+
+

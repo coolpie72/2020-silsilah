@@ -27,15 +27,17 @@ $marriage->marriagePlace = $marriage_place;
 $marriage->note = $note;
 $marriage->num = $marriage_num;
 
+$marriageService = new MarriageService($db);
+
 if ($op_mode === "add") {
     $marriage->id = Util::generateId();
 
     // Util::printVar($marriage);die;
-    MarriageService::save($db, $marriage);
+    $marriageService->save($marriage);
 } else if ($op_mode === "edit") {
     $marriage->id = $marriage_id;
     // Util::printVar($marriage);die;
-    MarriageService::update($db, $marriage);
+    $marriageService->update($marriage);
 }
 
 $db->close();

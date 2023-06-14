@@ -9,13 +9,19 @@ $id = $_GET["id"];
 $db = new DBManager();
 $db->connect();
 
-$marriage = MarriageService::load($db, $id);
+$personService = new PersonService($db);
 
-$husband = PersonService::load($db, $marriage->husbandId);
+$marriageService = new MarriageService($db);
 
-$wife = PersonService::load($db, $marriage->wifeId);
+$marriageChildService = new MarriageChildService($db);
 
-$childList = MarriageChildService::getListWithDetail($db, $marriage->id);
+$marriage = $marriageService->load($id);
+
+$husband = $personService->load($marriage->husbandId);
+
+$wife = $personService->load($marriage->wifeId);
+
+$childList = $marriageChildService->getListWithDetail($marriage->id);
 
 $childNumber = count($childList);
 

@@ -1,20 +1,25 @@
 <?php
 namespace silsilahApp;
 
+use coolpie\cache\SimpleCacheClosure;
+
 class PersonCache {
     
-    private $cache = [];
+    private $cache;
+    private $personService;
 
-    public function __construct(&$db) {
-        $this->db = $db;
+    public function __construct($personService) {
+        $this->personService = $personService;
+        
+        $me = $this;
+        $providerFunc = function ($key) use ($me) {
+            return $me->personService->load($key);
+        };
+        
+        $this->cache = new SimpleCacheClosure($providerFunc);
     }
 
     public function get($id) {
-        if (array_key_exists($id, $this->cache)) {
-            return $this->cache[$id];
-        }
-        $person = PersonService::load($this->db, $id);
-        $this->cache[$id] = $person;
-        return $person;
+        return $this->cache->get($id);
     }
 }

@@ -6,7 +6,7 @@ use silsilahApp\MarriageService;
 //kalo ada id berrati edit
 $id = isset($_GET["id"])? $_GET["id"] : null;
 
-$IS_ADD = $id == null;
+$IS_ADD = $id === null;
 
 $op_mode = "add";
 $title = "Tambah Pernikahan";
@@ -23,7 +23,9 @@ if (!$IS_ADD) {
     $db = new DBManager();
     $db->connect();
 
-    $marriage = MarriageService::load($db, $id);
+    $marriageService = new MarriageService($db);
+
+    $marriage = $marriageService->load($id);
 
     $db->close();
 

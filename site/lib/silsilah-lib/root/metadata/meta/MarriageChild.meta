@@ -1,0 +1,12 @@
+
+# hdr:<db-table>:<class>:
+hdr:marriage_child:silsilahApp\MarriageChild:
+
+# field:<prop>:<type>:<db-field>:<nullable>:<pk>:
+# nullable: y atau n
+# pk: pk atau kosong
+
+field:marriageId:string:marriage_id:n:pk:
+field:childId:string:child_id:n:pk:
+field:number:int:num:n::
+

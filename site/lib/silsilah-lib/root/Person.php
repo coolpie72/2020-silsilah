@@ -20,7 +20,7 @@ class Person {
     }
 
     public function initDefault() {
-        $this->gender = "M";
+        $this->gender = Constants::GENDER_MALE;
         $this->birthDate = null;
         $this->birthPlace = null;
         $this->birthDateExt = null;
@@ -32,11 +32,11 @@ class Person {
     }
 
     public function isMale() {
-        return $this->gender == "M";
+        return $this->gender === Constants::GENDER_MALE;
     }
 
     public function isFemale() {
-        return $this->gender == "F";
+        return $this->gender === Constants::GENDER_FEMALE;
     }
 
     public function isDied() {

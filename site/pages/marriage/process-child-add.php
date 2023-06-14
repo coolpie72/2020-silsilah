@@ -17,8 +17,9 @@ $marriageChild->number = $child_num;
 
 $db = new DBManager();
 $db->connect();
+$marriageChildService = new MarriageChildService($db);
 
-MarriageChildService::save($db, $marriageChild);
+$marriageChildService->save($db, $marriageChild);
 
 $db->close();
 

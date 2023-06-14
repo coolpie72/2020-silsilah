@@ -29,7 +29,9 @@ if (!$IS_ADD) {
     $db = new DBManager();
     $db->connect();
 
-    $person = PersonService::load($db, $id);
+    $personService = new PersonService($db);
+
+    $person = $personService->load($id);
 
     $db->close();
 
